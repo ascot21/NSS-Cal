@@ -39,11 +39,13 @@ class CalendarTest < Test::Unit::TestCase
     yr4 = Calendar.new(2,2014)
     yr5 = Calendar.new(3,2030)
     yr6 = Calendar.new(1,2030)
+    yr7 = Calendar.new(2,1865)
     assert_equal("Saturday",yr.start_day)
     assert_equal("Sunday",yr2.start_day)
     assert_equal("Wednesday",yr3.start_day)
     assert_equal("Saturday",yr4.start_day)
     assert_equal("Friday",yr5.start_day)
     assert_equal("Tuesday",yr6.start_day)
+    assert_equal("Wednesday",yr7.start_day)
   end
 end
