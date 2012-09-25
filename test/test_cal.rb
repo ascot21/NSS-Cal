@@ -8,7 +8,7 @@ class CalendarTest < Test::Unit::TestCase
     assert_equal("February", mnth.name)
   end
 
-  def test_02_Calendar_num_days
+  def test_02_Calendar_num_day
     mnth = Calendar.new(2,2012)
     mnth2 = Calendar.new(1,2013)
     assert_equal(29, mnth.num_of_days)
