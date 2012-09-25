@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'cal'
+require 'calendar'
 
 class CalendarTest < Test::Unit::TestCase
 
