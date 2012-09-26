@@ -6,10 +6,6 @@ class Calendar
     @year = year
   end
 
-  def generate_calendar_for(month_number,year)
-    start_day = get_day_of_week
-  end
-
   def name
     monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
     true_nam = @month_number - 1
