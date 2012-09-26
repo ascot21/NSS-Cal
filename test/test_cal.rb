@@ -5,14 +5,20 @@ class CalendarTest < Test::Unit::TestCase
 
   def test_01_return_month_name
     mnth = Calendar.new(2,2012)
+    mnth2 = Calendar.new(4,2012)
+    mnth3 = Calendar.new(7,2012)
     assert_equal("February", mnth.name)
+    assert_equal("April", mnth2.name)
+    assert_equal("July", mnth3.name)
   end
 
   def test_02_Calendar_num_day
     mnth = Calendar.new(2,2012)
     mnth2 = Calendar.new(1,2013)
+    mnth3 = Calendar.new(7,2013)
     assert_equal(29, mnth.num_of_days)
     assert_equal(31, mnth2.num_of_days)
+    assert_equal(31, mnth3.num_of_days)
   end
 
   def test_03_leap_year
@@ -47,5 +53,19 @@ class CalendarTest < Test::Unit::TestCase
     assert_equal("Friday",yr5.start_day)
     assert_equal("Tuesday",yr6.start_day)
     assert_equal("Wednesday",yr7.start_day)
+  end
+
+  def test_05_print_one_month
+    yr = Calendar.new(9,2012)
+    expected = []
+    expected << "   September 2012   "
+    expected << "Su Mo Tu We Th Fr Sa"
+    expected << "                   1"
+    expected << " 2  3  4  5  6  7  8"
+    expected << " 9 10 11 12 13 14 15"
+    expected << "16 17 18 19 20 21 22"
+    expected << "23 24 25 26 27 28 29"
+    expected << "30"
+    assert_equal(expected,yr.print_month)
   end
 end

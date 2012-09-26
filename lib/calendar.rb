@@ -8,8 +8,8 @@ class Calendar
 
   def name
     monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
-    true_nam = @month_number - 1
-    monthNames[true_nam]
+    true_num = @month_number - 1
+    monthNames[true_num]
   end
 
   def num_of_days
@@ -47,6 +47,31 @@ class Calendar
     days_of_the_week[start_num]
   end
 
+  def print_month
+    #create string of Month and Year,calculate needed spaces and
+    dateline = "#{self.name} #{@year}"
+
+    #get the start day string and get index of it
+    start = self.start_day
+    days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',]
+    startday = days.index(start)
+
+    #build output of dates
+    output = " "
+    startday.times do output.prepend("   ") end #add space at the beginning to accont for start date
+    output += (1..9).to_a.join("  ")
+    output += " "
+    output += (10..self.num_of_days).to_a.join(" ")
+    new_output = output.scan(/.{1,21}/)
+    new_output.each do |o|
+      o.rstrip!
+    end
+
+    #print out the month
+    first_line = dateline.center(20)
+    second_line = "Su Mo Tu We Th Fr Sa"
+    new_output.unshift(second_line).unshift(first_line)
+  end
+
+
 end
-
-
