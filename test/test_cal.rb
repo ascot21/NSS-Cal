@@ -68,4 +68,6 @@ class CalendarTest < Test::Unit::TestCase
     expected << "30"
     assert_equal(expected,yr.print_month)
   end
+
+
 end
