@@ -4,31 +4,31 @@ require 'calendar'
 class CalendarTest < Test::Unit::TestCase
 
   def test_01_return_month_name
-    mnth = Calendar.new(2,2012)
-    mnth2 = Calendar.new(4,2012)
-    mnth3 = Calendar.new(7,2012)
+    mnth = Month.new(2,2012)
+    mnth2 = Month.new(4,2012)
+    mnth3 = Month.new(7,2012)
     assert_equal("February", mnth.name)
     assert_equal("April", mnth2.name)
     assert_equal("July", mnth3.name)
   end
 
   def test_02_Calendar_num_day
-    mnth = Calendar.new(2,2012)
-    mnth2 = Calendar.new(1,2013)
-    mnth3 = Calendar.new(7,2013)
+    mnth = Month.new(2,2012)
+    mnth2 = Month.new(1,2013)
+    mnth3 = Month.new(7,2013)
     assert_equal(29, mnth.num_of_days)
     assert_equal(31, mnth2.num_of_days)
     assert_equal(31, mnth3.num_of_days)
   end
 
   def test_03_leap_year
-    yr = Calendar.new(2,2400)
-    yr2 = Calendar.new(2,2000)
-    yr3 = Calendar.new(2,2100)
-    yr4 = Calendar.new(2,2012)
-    yr5 = Calendar.new(2,1800)
-    yr6 = Calendar.new(2,1900)
-    yr7 = Calendar.new(2,2013)
+    yr = Month.new(2,2400)
+    yr2 = Month.new(2,2000)
+    yr3 = Month.new(2,2100)
+    yr4 = Month.new(2,2012)
+    yr5 = Month.new(2,1800)
+    yr6 = Month.new(2,1900)
+    yr7 = Month.new(2,2013)
     assert_equal(true, yr.leap_year?)
     assert_equal(true, yr2.leap_year?)
     assert_equal(false, yr3.leap_year?)
@@ -39,13 +39,13 @@ class CalendarTest < Test::Unit::TestCase
   end
 
   def test_04_start_day
-    yr = Calendar.new(9,2012)
-    yr2 = Calendar.new(4,2012)
-    yr3 = Calendar.new(5,2013)
-    yr4 = Calendar.new(2,2014)
-    yr5 = Calendar.new(3,2030)
-    yr6 = Calendar.new(1,2030)
-    yr7 = Calendar.new(2,1865)
+    yr = Month.new(9,2012)
+    yr2 = Month.new(4,2012)
+    yr3 = Month.new(5,2013)
+    yr4 = Month.new(2,2014)
+    yr5 = Month.new(3,2030)
+    yr6 = Month.new(1,2030)
+    yr7 = Month.new(2,1865)
     assert_equal("Saturday",yr.start_day)
     assert_equal("Sunday",yr2.start_day)
     assert_equal("Wednesday",yr3.start_day)
@@ -56,7 +56,7 @@ class CalendarTest < Test::Unit::TestCase
   end
 
   def test_05_print_one_month
-    yr = Calendar.new(9,2012)
+    yr = Month.new(9,2012)
     expected = []
     expected << "   September 2012   "
     expected << "Su Mo Tu We Th Fr Sa"
