@@ -10,11 +10,9 @@ The goal of this project was to implement a Ruby program that mimics the Unix Ca
 * Displays single month from 2012 when just given a month
 
 ##How to Use
-1. In terminal navigate to lib folder
-
-    ```ruby
-    ruby cal.rb 3 2012
-    ```
+```ruby
+ruby cal.rb 3 2012
+```
 
 where 3 is the month and 2012 is the year
 
@@ -25,11 +23,13 @@ Only works for years 1800-3000
 None
 
 ##File Structure
-cal.rb - logic for parsing parameters
++ **cal.rb** - logic for parsing parameters
++ **month.rb** - the Month class
++ **year.rb** - the Year class
 
-month.rb - the Month class
+##Bugs
+No known bugs.
 
-year.rb - the Year class
 
 
 
