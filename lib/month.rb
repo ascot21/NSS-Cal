@@ -6,7 +6,7 @@ class Month
   end
 
   def name
-    monthNames=['January','February','March','April','May','June','July','August','September','October','November','December']
+    monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December']
     true_num = @month_number - 1
     monthNames[true_num]
   end
