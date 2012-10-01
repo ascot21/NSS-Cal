@@ -12,7 +12,9 @@ The goal of this project was to implement a Ruby program that mimics the Unix Ca
 ##How to Use
 1. In terminal navigate to lib folder
 
+    ```ruby
     ruby cal.rb 3 2012
+    ```
 
 where 3 is the month and 2012 is the year
 
