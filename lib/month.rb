@@ -6,7 +6,7 @@ class Month
   end
 
   def name
-    monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    monthNames=['January','February','March','April','May','June','July','August','September','October','November','December']
     true_num = @month_number - 1
     monthNames[true_num]
   end
@@ -29,6 +29,7 @@ class Month
       month += 12
       @year = @year - 1
     end
+    #Zeller's congruence http://en.wikipedia.org/wiki/Zeller's_congruence
     start_num = (q + ((month + 1)*26  / 10).floor + @year + (@year / 4).floor + (6*(@year / 100).floor) + (@year / 400).floor) % 7;
     days_of_the_week[start_num]
   end

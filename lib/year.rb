@@ -67,24 +67,6 @@ class Year
         else
           weeksixstr << " "*22
         end
-        # if yr[y][6] == nil
-        #   weekfivestr = ""
-        #   weekfivestr << "                      "
-        # else
-        #   weekfive = yr[y][6]
-        #   weekfive = weekfive.ljust(20)
-        #   weekfivestr << weekfive
-        #   weekfivestr << "  "
-        # end
-        # if yr[y][7] == nil
-        #   weeksixstr = ""
-        #   weeksixstr << "                      "
-        # else
-        #   weeksix = yr[y][7]
-        #   weeksix = weeksix.ljust(20)
-        #   weeksixstr << weeksix
-        #   weeksixstr << "  "
-        # end
         y += 1
       end
 
