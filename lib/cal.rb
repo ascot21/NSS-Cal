@@ -19,13 +19,3 @@ else
   cal = Month.new(month,year)
   puts cal.print_month
 end
-
-
-
-
-
-
-
-
-month = ARGV[0]
-year = ARGV[1]

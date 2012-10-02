@@ -7,17 +7,15 @@ class Month
 
   def name
     monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December']
-    true_num = @month_number - 1
-    monthNames[true_num]
+    monthNames[@month_number - 1]
   end
 
   def num_of_days
     daysInMonth=[31,28,31,30,31,30,31,31,30,31,30,31]
-    true_num = @month_number - 1
-    if true_num == 1 && self.leap_year? == true
+    if @month_number - 1 == 1 && self.leap_year?
       return 29
     else
-      daysInMonth[true_num]
+      daysInMonth[@month_number - 1]
     end
   end
 
@@ -35,12 +33,11 @@ class Month
   end
 
   def leap_year?
-    item = @year
-    if item % 400 == 0
+    if @year % 400 == 0
       return true
-    elsif item % 100 == 0
+    elsif @year % 100 == 0
       return false
-    elsif item % 4 == 0
+    elsif @year % 4 == 0
       return true
     else
       return false
@@ -48,8 +45,6 @@ class Month
   end
 
   def print_month
-    #create string of Month and Year,calculate needed spaces and
-    dateline = "#{self.name} #{@year}"
 
     #get the start day string and get index of it
     start = self.start_day
@@ -58,7 +53,7 @@ class Month
 
     #build output of dates
     output = " "
-    startday.times do output.prepend("   ") end #add space at the beginning to accont for start date
+    startday.times do output.prepend("   ") end #add space at the beginning to account for start date
     output += (1..9).to_a.join("  ")
     output += " "
     output += (10..self.num_of_days).to_a.join(" ")
@@ -68,7 +63,7 @@ class Month
     end
 
     #print out the month
-    first_line = dateline.center(20)
+    first_line = "#{self.name} #{@year}".center(20)
     second_line = "Su Mo Tu We Th Fr Sa"
     new_output.unshift(second_line).unshift(first_line)
   end

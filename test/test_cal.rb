@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'calendar'
+require 'cal'
 
 class CalendarTest < Test::Unit::TestCase
 
@@ -12,47 +12,65 @@ class CalendarTest < Test::Unit::TestCase
     assert_equal("July", mnth3.name)
   end
 
-  def test_02_Calendar_num_day
-    mnth = Month.new(2,2012)
-    mnth2 = Month.new(1,2013)
-    mnth3 = Month.new(7,2013)
-    assert_equal(29, mnth.num_of_days)
-    assert_equal(31, mnth2.num_of_days)
-    assert_equal(31, mnth3.num_of_days)
-  end
-
-  def test_03_leap_year
-    yr = Month.new(2,2400)
-    yr2 = Month.new(2,2000)
-    yr3 = Month.new(2,2100)
-    yr4 = Month.new(2,2012)
-    yr5 = Month.new(2,1800)
-    yr6 = Month.new(2,1900)
-    yr7 = Month.new(2,2013)
+  def test_02b_leap_year_if_400
+    yr  = Month.new(2,2400)
+    yr2  = Month.new(2,2000)
     assert_equal(true, yr.leap_year?)
     assert_equal(true, yr2.leap_year?)
-    assert_equal(false, yr3.leap_year?)
-    assert_equal(true, yr4.leap_year?)
-    assert_equal(false, yr5.leap_year?)
-    assert_equal(false, yr6.leap_year?)
-    assert_equal(false, yr7.leap_year?)
   end
 
-  def test_04_start_day
+  def test_02c_not_leap_year_if_100
+    yr  = Month.new(2,2100)
+    yr2  = Month.new(2,1800)
+    assert_equal(false, yr.leap_year?)
+    assert_equal(false, yr2.leap_year?)
+  end
+
+  def test_02d_leap_year_if_4
+    yr  = Month.new(2,2012)
+    yr2  = Month.new(2,1996)
+    assert_equal(true, yr.leap_year?)
+    assert_equal(true, yr2.leap_year?)
+  end
+
+  def test_02e_not_leap_year_if_random
+    yr  = Month.new(2,1993)
+    yr2  = Month.new(2,2561)
+    assert_equal(false, yr.leap_year?)
+    assert_equal(false, yr2.leap_year?)
+  end
+
+  def test_03_Calendar_num_day
+    mnth = Month.new(1,2013)
+    mnth2 = Month.new(7,2013)
+    assert_equal(31, mnth.num_of_days)
+    assert_equal(31, mnth2.num_of_days)
+  end
+
+  def test_03b_february_num_day_when_leap_year
+    mnth = Month.new(2,2012)
+    assert_equal(29, mnth.num_of_days)
+  end
+
+  def test_03c_february_num_day_when_not_leap_year
+    mnth = Month.new(2,2011)
+    assert_equal(28, mnth.num_of_days)
+  end
+
+  def test_04_start_day_non_leap_year
+    yr = Month.new(5,2013)
+    yr2 = Month.new(2,2014)
+    yr3 = Month.new(3,2030)
+    assert_equal("Wednesday",yr.start_day)
+    assert_equal("Saturday",yr2.start_day)
+    assert_equal("Friday",yr3.start_day)
+  end
+
+  def test_04b_start_day_leap_year
     yr = Month.new(9,2012)
     yr2 = Month.new(4,2012)
-    yr3 = Month.new(5,2013)
-    yr4 = Month.new(2,2014)
-    yr5 = Month.new(3,2030)
-    yr6 = Month.new(1,2030)
-    yr7 = Month.new(2,1865)
     assert_equal("Saturday",yr.start_day)
     assert_equal("Sunday",yr2.start_day)
-    assert_equal("Wednesday",yr3.start_day)
-    assert_equal("Saturday",yr4.start_day)
-    assert_equal("Friday",yr5.start_day)
-    assert_equal("Tuesday",yr6.start_day)
-    assert_equal("Wednesday",yr7.start_day)
   end
 
   def test_05_print_one_month
